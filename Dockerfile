@@ -23,12 +23,10 @@ ARG aat_ver
 COPY v${aat_ver}.tar.gz /adapt_authoring.tar.gz
 
 RUN tar -xzf adapt_authoring.tar.gz && \
-    rm -f adapt_authoring.tar.gz && \
-    ln -s adapt_authoring-${aat_ver} adapt_authoring
+    rm -f adapt_authoring.tar.gz
 
-WORKDIR /adapt_authoring
+WORKDIR /adapt_authoring-${aat_ver}
 
 RUN npm install --production
 
 EXPOSE 5000
-
