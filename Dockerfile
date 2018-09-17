@@ -10,22 +10,16 @@ RUN apt-get update && apt-get install -y \
     npm && \
     rm -rf /var/lib/apt/lists/*
 
-RUN npm install -g grunt
-
-RUN npm install -g coffeescript@1.10.0 && \
+RUN npm install -g grunt && \
+    npm install -g coffeescript@1.10.0 && \
     npm install -g jsonlint@1.6.3 && \
     npm install -g jshint@2.9.6 7
 
-WORKDIR /
-
 ARG aat_ver
 
-COPY v${aat_ver}.tar.gz /adapt_authoring.tar.gz
+COPY adapt_authoring /adapt_authoring
 
-RUN tar -xzf adapt_authoring.tar.gz && \
-    rm -f adapt_authoring.tar.gz
-
-WORKDIR /adapt_authoring-${aat_ver}
+WORKDIR /adapt_authoring
 
 RUN npm install --production
 
