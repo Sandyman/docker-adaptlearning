@@ -15,11 +15,9 @@ RUN npm install -g grunt && \
     npm install -g jsonlint@1.6.3 && \
     npm install -g jshint@2.9.6 7
 
-ARG aat_ver
-
-COPY adapt_authoring /adapt_authoring
-
 WORKDIR /adapt_authoring
+
+COPY adapt_authoring .
 
 RUN npm install --production
 
