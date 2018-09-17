@@ -1,0 +1,34 @@
+version: '2'
+
+volumes:
+  adaptdata:
+  adaptdb:
+
+services:
+  adapt:
+    image: sandyman/adaptlearning:latest
+    container_name: "adaptlearning"
+    networks: 
+      - tlc
+    volumes:
+      - adaptdata:/adapt_authoring
+    ports:
+      - "5000:5000"
+
+  mongodb:
+    image: mongo:3.6
+    container_name: "adaptdb"
+    networks: 
+      - tlc
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    volumes:
+      - adaptdb:/data/db
+    ports:
+      - "32017:27017"
+    command: mongod --smallfiles --logpath=/dev/null
+
+networks:
+  tlc:
+
