@@ -2,7 +2,7 @@
 
 build.sh
 
+.env
 .idea
-
 .git
 .gitignore
