@@ -11,5 +11,4 @@ if [ ! -f ${tarball} ]; then
     curl -L https://github.com/adaptlearning/adapt_authoring/archive/${tarball} -o ${tarball}
 fi
 
-docker build --build-arg aat_ver=${AAT_VER} -t ${USERNAME}/${IMAGENAME} .
-
+docker build --rm --build-arg aat_ver=${AAT_VER} -t ${USERNAME}/${IMAGENAME} .
